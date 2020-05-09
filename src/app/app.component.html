@@ -1,0 +1,47 @@
+
+  <div *ngIf="start;else StarView" >
+    <div *ngFor="let question of getItems();" class="content" role="main">
+        <div class="header card highlight-card card-small" style="display: flex; flex-direction: column;">
+            <div>{{ question.Title }}</div>
+            <div style="font-size: 15px;">{{ question.Description }}</div>
+            <img style="margin: 4px 0;" src="{{question.imgTitle}}" alt="">
+            <div style="font-size: 15px;text-align: left; width: 100%;">{{ question.Description2 }}</div>
+            <div style="text-align: left; width: 100%;">Question {{ question.id }}</div> 
+            <div style="text-align: left; width: 100%; font-size: 15px;"> Solve the following problem: </div>
+          </div>
+      
+          <div class="img">
+            <img src="{{question.imgQuestion}}" alt="">
+          </div>
+          <div class="card-container">
+            <a *ngFor="let answers of question.answers;" class="card" target="_blank" rel="noopener" (click)="validateAnswer(answers.status)">
+              <img src="{{ answers.name}}" alt="">
+            </a>    
+          </div>
+          <div class="footer">
+            <img style="width: 100%;" src="../assets/images/logotipo.png" alt="">
+          </div>
+    </div>   
+  </div>
+
+<ng-template #StarView>
+    <div class="content" role="main">
+      <div class="header card highlight-card card-small">
+        <span>Learn about the laws of empowerment</span>
+      </div>
+      <a class="card" target="_blank" rel="noopener" style="justify-self: center; grid-column: 1 / 3; grid-row: 2 / 3;" (click)="startGame()">
+        <span>START</span>
+      </a> 
+
+      <a class="card" target="_blank" rel="noopener">
+        <span>Score: {{points}}/100</span>
+        <span>Tried: {{tried}}</span>
+      </a> 
+      
+      <div class="footer">
+        <img style="width: 100%;" src="../assets/images/logotipo.png" alt="">
+      </div>         
+    </div>
+</ng-template>
+
+
